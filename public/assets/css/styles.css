@@ -29,7 +29,7 @@
   --fs-h3: clamp(24px, 2.2vw, 32px);     /* Kartentitel (Leistungen, Stellen) */
   --fs-h4: clamp(20px, 1.8vw, 24px);     /* kleine Titel (Firmen, Projekte) */
   --fs-lead: clamp(20px, 1.7vw, 26px);   /* Einleitungstexte, Abschnitts-Label */
- --fs-body: clamp(16px, 1.35vw, 20px);  /* Fließtext */
+  --fs-body: clamp(16px, 1.35vw, 19px);  /* Fließtext */
   --fs-small: clamp(16px, 1.2vw, 18px);  /* Listen, Buttons, Formulare, Footer */
   --fs-label: 13px;                      /* Kleinschrift in Großbuchstaben */
 }
