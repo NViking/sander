@@ -1,7 +1,9 @@
-wrangler.jsonc
-.assetsignore
+.git
+.gitignore
 .vscode
 .DS_Store
+wrangler.jsonc
+.assetsignore
 README.md
-.git
 node_modules
+.wrangler
