@@ -1,6 +1,13 @@
+/* styles.css – bereinigt und neu strukturiert
+   Aufbau: 1 Variablen · 2 Grundlagen · 3 Header · 4 Buttons · 5 Hero · 6 Bereiche
+           7 Firmen · 8 Leistungen · 9 Projekte · 10 Kontakt · 11 Footer · 12 Animation
+           13 Responsive (große → kleine Breite) · 14 Bewegung reduzieren */
+
 @import url(
   "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@400;500;600;700&display=swap"
 );
+
+/* ---------- 1. Variablen ---------- */
 
 :root {
   --bg: #fdf9f5;
@@ -17,7 +24,9 @@
   --font-body: "DM Sans", Arial, sans-serif;
 
   --container: 1480px;
-  --gutter: clamp(20px, 4vw, 56px);
+  --gutter: clamp(30px, 4vw, 56px);
+  --header-pad: var(--gutter);              /* NEU: Seitenabstand des Headers (mobil enger) */
+  --logo-offset: 20px; 
   --space: clamp(52px, 10vw, 100px);
   --radius: 18px;
   --step--1: clamp(0.78rem, 0.74rem + 0.18vw, 0.9rem);
@@ -34,9 +43,7 @@
   --fs-label: 13px;                      /* Kleinschrift in Großbuchstaben */
 }
 
-
-
-/* Grundlagen */
+/* ---------- 2. Grundlagen ---------- */
 
 * {
   box-sizing: border-box;
@@ -70,8 +77,6 @@ textarea {
   margin: auto;
 }
 
-/* Accessibility */
-
 .skip-link {
   position: fixed;
   top: 8px;
@@ -87,12 +92,13 @@ textarea {
   transform: none;
 }
 
+/* ---------- 3. Header ---------- */
+
 .site-header {
   position: fixed !important;
   top: 0 !important;
   right: 0 !important;
   left: 0 !important;
-
   z-index: 99999 !important;
 
   display: flex !important;
@@ -100,8 +106,11 @@ textarea {
   opacity: 1 !important;
   transform: translateY(0) !important;
 
+  align-items: center;
+  justify-content: space-between;
+
   height: 86px;
-  padding: 0 var(--gutter);
+  padding: 0 var(--header-pad);
 
   background: transparent;
   border-bottom: 1px solid transparent;
@@ -113,51 +122,55 @@ textarea {
     color 0.25s ease;
 }
 
-.site-header .brand-logo {
-  filter: brightness(0) invert(1);
-  transition: filter 0.25s ease;
-}
-
-/* Header */
-
-.site-header {
-  position: absolute;
-  inset: 0 0 auto;
-  z-index: 10;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  height: 86px;
-  padding: 0 var(--gutter);
-  color: #fff;
-}
-
 .brand {
   display: flex;
   align-items: center;
+  min-width: 0;                              /* NEU: Logo darf schrumpfen */
+  margin-left: calc(-1 * var(--logo-offset));   /* NEU: zieht das Logo nach links */
   line-height: 1;
 }
 
 .brand-logo {
   display: block;
-  width: 280px;
+  width: clamp(150px, 48vw, 280px);          /* GEÄNDERT: wird auf Handys kleiner (war 280px) */
+  max-width: 100%;
   height: auto;
-  align-items: center;
+}
+
+.site-header .brand-logo {
+  filter: brightness(0) invert(1);
+  transition: filter 0.25s ease;
 }
 
 .main-nav {
   display: flex;
   align-items: center;
   gap: 26px;
-
   font-size: 18px;
 }
 
 .main-nav a:not(.nav-contact) {
   opacity: 0.9;
 }
+
+.main-nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.menu-toggle,
+.footer-consent {
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+/* ---------- 4. Buttons und Links ---------- */
 
 .nav-contact,
 .button {
@@ -180,24 +193,57 @@ textarea {
   color: #20201e;
 }
 
-.main-nav a:hover {
-  opacity: 1;
-  text-decoration: underline;
+.button-primary {
+  border-color: #fff;
+  background: #fff;
+  color: #20201e;
 }
 
-.menu-toggle,
-.footer-consent {
-  border: 0;
-  background: none;
-  color: inherit;
+.button-peach {
+  margin-top: 8px;
+  border-color: var(--peach);
+  background: var(--peach);
+  color: #fff;
   cursor: pointer;
 }
 
-.menu-toggle {
-  display: none;
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-/* Hero */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 28px;
+}
+
+.text-link {
+  display: inline-block;
+  padding-bottom: 4px;
+  border-bottom: 1px solid currentColor;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  transition: transform 0.25s ease;
+}
+
+.text-link:hover {
+  transform: translateY(-2px);
+}
+
+.text-link span {
+  margin-left: 10px;
+}
+
+/* NEU: Pfeile (→ ↘) nie als Emoji darstellen */
+.button span,
+.text-link span,
+.hero-index {
+  font-variant-emoji: text;
+}
+
+/* ---------- 5. Hero ---------- */
 
 .hero {
   position: relative;
@@ -220,9 +266,6 @@ textarea {
 }
 
 .hero-image {
-  position: absolute;
-  inset: 0;
-
   background-image:
     linear-gradient(
       to bottom,
@@ -231,7 +274,6 @@ textarea {
       rgba(10, 12, 10, 0.24) 180px,
       rgba(10, 12, 10, 0) 330px
     ),
-
     linear-gradient(
       to left,
       rgba(10, 12, 10, 0.04) 0%,
@@ -256,18 +298,9 @@ textarea {
   padding-bottom: clamp(68px, 10vh, 122px);
 }
 
-.eyebrow,
-.section-label {
-  font-size: var(--fs-label);
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
 .hero h1 {
   max-width: 900px;
   margin: 16px 0 24px;
-
   font: 600 var(--fs-hero) / 1.04 var(--font-display);
   letter-spacing: -0.05em;
 }
@@ -279,57 +312,29 @@ textarea {
 .hero-copy {
   max-width: 60ch;
   margin-bottom: 34px;
-
   font-size: var(--fs-body);
 }
 
-.button-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 28px;
-}
-
-.button-primary {
-  border-color: #fff;
-  background: #fff;
-  color: #20201e;
-}
-
-.button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
-
-.text-link {
-  display: inline-block;
-  padding-bottom: 4px;
-  font-size: var(--fs-small);
-  border-bottom: 1px solid currentColor;
-  font-weight: 600;
-  transition: transform 0.25s ease;
-}
-
-.text-link span {
-  margin-left: 10px;
-}
-
-.text-link:hover {
-  transform: translateY(-2px);
-}
 .hero-index {
   position: absolute;
   right: var(--gutter);
   bottom: 35px;
-
   font-size: var(--fs-label);
   letter-spacing: 0.1em;
 }
 
-/* Allgemeine Bereiche */
+/* ---------- 6. Allgemeine Bereiche ---------- */
 
 .section {
   padding: var(--space) 0;
+}
+
+.eyebrow,
+.section-label {
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .section-label {
@@ -349,7 +354,6 @@ textarea {
 .section-head h2,
 .contact h2 {
   margin: 0;
-
   font: 500 var(--fs-h1) / 1.12 var(--font-display);
   letter-spacing: -0.045em;
 }
@@ -357,7 +361,6 @@ textarea {
 .two-col p {
   max-width: 60ch;
   margin: 0 0 18px;
-
   color: var(--muted);
   font-size: var(--fs-body);
   line-height: 1.65;
@@ -366,14 +369,19 @@ textarea {
 .placeholder-note {
   padding-left: 14px;
   border-left: 2px solid var(--peach);
-
   color: var(--olive) !important;
   font-size: var(--fs-small) !important;
 }
 
-/* =========================================================
-   FIRMEN-GRID – wachsende Karten mit Linien (aus Portfolio)
-   ========================================================= */
+.split {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  max-width: none;
+}
+
+/* ---------- 7. Firmen-Karten ---------- */
 
 .firm-cards {
   display: grid;
@@ -405,7 +413,7 @@ textarea {
   display: block;
   width: auto;
   max-width: 100%;
-  height: 80px;                 
+  height: 80px;
   margin: 0 0 32px;
   object-fit: contain;
   object-position: center;
@@ -444,14 +452,17 @@ textarea {
   line-height: 1.6;
 }
 
-/* Leistungen */
+/* ---------- 8. Leistungen ---------- */
+
 .section-muted {
   padding: var(--space) 0;
   background: var(--surface);
 }
+
 .service-list {
-  display: grid;
   --service-gap: clamp(24px, 3vw, 56px);
+
+  display: grid;
   grid-template-columns: repeat(
     auto-fit,
     minmax(min(100%, max(300px, calc((100% - 2 * var(--service-gap)) / 3 - 1px))), 1fr)
@@ -488,33 +499,29 @@ textarea {
 
 .service-card p {
   max-width: 38ch;
-  font-size: var(--fs-body);
   margin: 0;
   color: var(--muted);
+  font-size: var(--fs-body);
   line-height: 1.6;
 }
 
-/* Projekte */
-
-.split {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 30px;
-
-  max-width: none;
-}
+/* ---------- 9. Projekte ---------- */
 
 .project-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 24px;
-  
   margin-top: 60px;
 }
 
 .project-card {
   grid-column: span 4;
+  display: block;
+  align-self: start;
+  height: fit-content;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .project-card:nth-child(2) {
@@ -527,9 +534,39 @@ textarea {
   margin-top: 8px;
 }
 
+.project-card.reveal.is-visible {
+  transition: transform 0.35s ease, opacity 0.6s ease;
+}
+
+.project-card.reveal.is-visible:hover,
+.project-card.reveal.is-visible:focus-visible {
+  transform: scale(1.03);
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 6px;
+}
+
+.project-card h3 {
+  margin: 6px 0;
+  font: 600 var(--fs-h4) / 1.2 var(--font-display);
+  letter-spacing: -0.035em;
+  transition: color 0.25s;
+}
+
+.project-card:hover h3 {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 .project-image {
   position: relative;
+  height: clamp(250px, 32vw, 430px);
+  margin-bottom: 18px;
   overflow: hidden;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #a29f94, #5c6257);
 }
 
 .project-image img {
@@ -537,13 +574,6 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.project-image {
-  height: clamp(250px, 32vw, 430px);
-  margin-bottom: 18px;
-  border-radius: 2px;
-
-  background: linear-gradient(135deg, #a29f94, #5c6257);
 }
 
 .project-card:nth-child(2) .project-image {
@@ -562,46 +592,7 @@ textarea {
   text-transform: uppercase;
 }
 
-.project-card h3 {
-  margin: 6px 0;
-
-  font: 600 var(--fs-h4) / 1.2 var(--font-display);
-  letter-spacing: -0.035em;
-}
-
-.project-card {
-  display: block;  
-  align-self: start;        
-  height: fit-content;                  
-  color: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.project-card.reveal.is-visible {
-  transition: transform 0.35s ease, opacity 0.6s ease;   
-}
-
-.project-card.reveal.is-visible:hover,
-.project-card.reveal.is-visible:focus-visible {
-  transform: scale(1.03);            
-}
-
-.project-card:focus-visible {
-  outline: 2px solid var(--olive);   
-  outline-offset: 6px;
-}
-
-.project-card h3 {
-  transition: color 0.25s;
-}
-
-.project-card:hover h3 {
-  text-decoration: underline;        
-  text-underline-offset: 4px;
-}
-
-/* Kontakt */
+/* ---------- 10. Kontakt ---------- */
 
 .contact {
   padding: var(--space) 0;
@@ -623,8 +614,8 @@ textarea {
 
 .contact address {
   margin-top: 48px;
-  font-size: var(--fs-body);
   color: var(--text);
+  font-size: var(--fs-body);
   font-style: normal;
 }
 
@@ -662,7 +653,6 @@ textarea {
   border-bottom: 1px solid var(--peach);
   border-radius: 0;
   outline: 0;
-
   background: transparent;
   color: var(--muted);
   font-size: var(--fs-small);
@@ -684,7 +674,6 @@ textarea {
   flex-direction: row;
   align-items: flex-start;
   gap: 9px;
-
   color: var(--peach);
   font-weight: 400;
 }
@@ -698,44 +687,18 @@ textarea {
   text-decoration: underline;
 }
 
-.button-peach {
-  margin-top: 8px;
-  border-color: var(--peach);
-
-  background: var(--peach);
-  color: #ffffff;
-  cursor: pointer;
-}
-
 .form-status {
   margin: 0;
-  font-size: var(--fs-small);
   color: var(--peach);
+  font-size: var(--fs-small);
 }
 
-/* Footer */
+/* ---------- 11. Footer ---------- */
 
 .site-footer {
   padding: 2rem 0;
   background: #44362f;
   color: var(--surface);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
-  gap: 0.5rem 2rem;
-  padding: 1rem var(--gutter);
-}
-
-.footer-grid .copyright {
-  justify-self: stretch;
-  font-size: var(--fs-label);
-}
-.footer-label{
-  color: #eae0c8;
-  font-weight: 800;
 }
 
 .site-footer p {
@@ -750,23 +713,33 @@ textarea {
   font-size: var(--fs-small);
 }
 
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 0.5rem 2rem;
+  padding: 1rem var(--gutter);
+}
+
+.footer-label {
+  color: #eae0c8;
+  font-weight: 800;
+}
+
 .copyright {
   grid-column: 1 / -1;
-
   margin: 1rem 0 0;
   padding-top: 1rem;
   border-top: 1px solid color-mix(in srgb, var(--surface) 60%, transparent);
-
   color: color-mix(in srgb, var(--surface) 65%, transparent);
 }
 
-@media (max-width: 720px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    justify-items: start;
-  }
+.footer-grid .copyright {
+  justify-self: stretch;
+  font-size: var(--fs-label);
 }
-/* Animation */
+
+/* ---------- 12. Animation ---------- */
 
 .reveal {
   opacity: 0;
@@ -779,191 +752,9 @@ textarea {
   transform: none;
 }
 
-/* Tablet und Mobil */
-@media (max-width: 1000px) {
-  .firm-cards { grid-template-columns: 1fr }
-}
+/* ---------- 13. Responsive (große → kleine Breite) ---------- */
 
-@media (max-width: 800px) {
-  .site-header {
-    height: 72px;
-  }
-
-  .menu-toggle {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .menu-toggle span {
-    display: block;
-    width: 18px;
-    height: 1px;
-    background: currentColor;
-  }
-
-  .main-nav {
-    position: absolute;
-    top: 72px;
-    right: 0;
-    left: 0;
-
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-
-    padding: 25px var(--gutter);
-    background: #20201e;
-    color: #fff;
-  }
-
-  .main-nav.is-open {
-    display: flex;
-  }
-
-  .nav-contact {
-    margin-top: 8px;
-  }
-
-  .hero {
-    min-height: 680px;
-  }
-
-  .two-col,
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 34px;
-  }
-
-  .company-grid,
-  .job-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .company-grid {
-    margin-top: 55px;
-  }
-
-  .service-card {
-    grid-template-columns: 38px 1fr;
-    gap: 14px;
-  }
-
-  .service-card p,
-  .service-card a {
-    grid-column: 2;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-
-  .project-card,
-  .project-card:nth-child(2),
-  .project-card:nth-child(3) {
-    grid-column: auto;
-    margin-top: 0;
-  }
-
-  .project-image {
-    height: 65vw;
-  }
-
-  .process-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .contact-form {
-    margin-top: 16px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-grid small {
-    grid-column: auto;
-    margin-top: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 43px;
-  }
-
-  .process-grid,
-  .contact-form {
-    grid-template-columns: 1fr;
-  }
-
-  .field-full {
-    grid-column: auto;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-
-  * {
-    transition: none !important;
-  }
-}
-
-@media (max-width: 720px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Tablet und Smartphone: Karten untereinander, Linien dauerhaft sichtbar */
-@media (max-width: 900px) {
-  .company-grid {
-    flex-direction: column;
-    margin-top: 60px;
-  }
-
-  .company-grid article {
-    padding: 28px 24px;
-    transition: none;
-  }
-  .company-grid article,
-  .company-grid article:last-child {
-    border-left: 0;
-    border-right: 0;
-  }
-  .company-grid article:hover,
-  .company-grid article:focus-within {
-    flex-grow: 1;
-  }
-
-  .company-grid article::before,
-  .company-grid article::after {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-}
-
-/* Touch-Geräte ohne Hover: Linien dauerhaft sichtbar */
-@media (hover: none) {
-  .company-grid article::before,
-  .company-grid article::after {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-  .project-card.reveal.is-visible:hover { transform: none; }
-}
-
-/* NEU: Tablet – Burger-Menü mit kleinem Dropdown, Kontakt-Button entfällt */
+/* Tablet: Burger-Menü mit kleinem Dropdown, Kontakt-Button entfällt */
 @media (max-width: 1100px) {
   .menu-toggle {
     display: flex;
@@ -986,7 +777,7 @@ textarea {
   .main-nav {
     position: absolute;
     top: calc(100% + 6px);
-    right: var(--gutter);
+    right: var(--header-pad);                /* GEÄNDERT: bündig mit Header-Abstand (war var(--gutter)) */
     left: auto;
 
     display: none;
@@ -1015,11 +806,116 @@ textarea {
   }
 }
 
-/* Bewegung reduzieren */
+@media (max-width: 1000px) {
+  .firm-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Handy */
+@media (max-width: 800px) {
+  :root {
+    --header-pad: clamp(4px, 2vw, 16px);     /* NEU: je enger, desto näher am Rand */
+  }
+
+  .site-header {
+    height: 72px;
+  }
+
+  .hero {
+    min-height: 680px;
+  }
+
+  .two-col,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .job-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .service-card {
+    gap: 14px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .project-card,
+  .project-card:nth-child(2),
+  .project-card:nth-child(3) {
+    grid-column: auto;
+    margin-top: 0;
+  }
+
+  .project-image {
+    height: 65vw;
+  }
+
+  .contact-form {
+    margin-top: 16px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid small {
+    grid-column: auto;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 720px) {
+  .footer-grid {
+    justify-items: start;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 43px;
+  }
+
+  .process-grid,
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+
+  .field-full {
+    grid-column: auto;
+  }
+}
+
+/* Touch-Geräte ohne Hover: kein Zoom der Projekt-Karten */
+@media (hover: none) {
+  .project-card.reveal.is-visible:hover {
+    transform: none;
+  }
+}
+
+/* ---------- 14. Bewegung reduzieren ---------- */
+
 @media (prefers-reduced-motion: reduce) {
-  .company-grid article,
-  .company-grid article::before,
-  .company-grid article::after {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
     transition: none;
+  }
+
+  * {
+    transition: none !important;
   }
 }
