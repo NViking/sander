@@ -1,0 +1,312 @@
+.subpage {
+  --container: 1480px;
+}
+
+.subpage main {
+  padding-top: 86px;
+}
+/* ---------- Hero (wie karriere.css) ---------- */
+
+.firm-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(360px, 40vw, 420px);
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--olive) 35%, #fff), var(--olive));
+}
+
+.firm-hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+.firm-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.firm-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(10, 12, 10, 0.65), rgba(10, 12, 10, 0.1) 65%, rgba(10, 12, 10, 0));
+  pointer-events: none;
+}
+
+.firm-hero__content {
+  position: relative;
+  z-index: 2;
+  padding-top: 40px;
+  padding-bottom: clamp(32px, 5vw, 64px);
+}
+
+.firm-hero h1 {
+  margin: 12px 0 18px;
+  font: 500 var(--fs-hero) / 1.04 var(--font-display);
+  letter-spacing: -0.05em;
+}
+
+.firm-hero__lead {
+  max-width: 52ch;
+  margin: 0;
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+}
+
+/* ---------- Filter ---------- */
+
+.project-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-filter__btn {
+  padding: 10px 22px;
+  border: 1px solid var(--olive);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--olive);
+  font: inherit;
+  font-size: var(--fs-label);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+}
+
+.project-filter__btn:hover,
+.project-filter__btn:focus-visible,
+.project-filter__btn.is-active {
+  background: var(--olive);
+  color: #fff;
+}
+
+.project-filter__btn:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+/* ---------- Kachel-Raster: maximal 2 nebeneinander ---------- */
+
+.projekte-grid {                                  
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 56px 56px;
+  margin-top: 48px;
+}
+
+/* Versatz und Spannen der Startseiten-Kacheln hier ausschalten */
+.projekte-grid .project-card:nth-child(n) {
+  grid-column: auto;
+  margin-top: 0;
+}
+
+.projekte-grid .project-card:nth-child(n) .project-image {
+  height: clamp(220px, 26vw, 400px);
+  background: linear-gradient(135deg, #a29f94, #5c6257);
+}
+
+.project-card__text {
+  max-width: 60ch;
+  margin: 8px 0 0;
+  color: var(--ink-soft, inherit);
+  font-size: var(--fs-body, 1rem);
+  line-height: 1.55;
+}
+
+.project-card__more {
+  display: inline-block;
+  margin-top: 14px;
+  padding-bottom: 4px;
+  color: var(--olive);
+  font-size: var(--fs-label);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  background: linear-gradient(currentColor, currentColor) left bottom / 0 2px no-repeat;
+  transition: background-size 0.35s ease;
+}
+
+.project-card__more:hover,
+.project-card__more:focus-visible {
+  background-size: 100% 2px;
+}
+
+.project-card__more:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 4px;
+}
+
+#no-projekte {
+  margin-top: 40px;
+}
+
+.projekte-grid .project-meta {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  z-index: 2;
+  padding: 8px 12px;
+  background: #fff;
+  color: #20201e;
+  line-height: 1;
+  border-radius: 2px;
+}
+
+.projekte-grid .project-card,
+.projekte-grid .project-card:hover,
+.projekte-grid .project-card.reveal.is-visible:hover {
+  transform: none;
+  cursor: default;
+}
+
+.projekte-grid .project-card:hover h3 {
+  text-decoration: none;
+}
+
+.projekte-grid .project-card__more {
+  text-decoration: none;
+}
+
+.projekte-grid .project-card__more:hover {
+  cursor: pointer;
+}
+
+/* ---------- Unterseite projekt.html ---------- */
+
+.project-back {
+  display: inline-block;
+  margin-bottom: 36px;
+  color: var(--olive);
+  font-size: var(--fs-label);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.project-back:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.project-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.project-detail__text p {
+  max-width: 62ch;
+  margin: 0 0 1.2em;
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+/* ---------- Hero der Unterseite: nur der Name, zentriert ---------- */
+
+.firm-hero--title {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.firm-hero--title::before {
+  background: rgba(10, 12, 10, 0.45);
+}
+
+.firm-hero--title .firm-hero__content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.firm-hero--title h1 {
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* ---------- Rahmendaten-Gitter ---------- */
+
+.project-facts-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  overflow: hidden;
+  border-bottom: 1px solid rgba(32, 32, 30, 0.18);
+  background: #fff;
+}
+
+.fact {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px 28px;
+  box-shadow: 1px 0 0 rgba(32, 32, 30, 0.18), 0 1px 0 rgba(32, 32, 30, 0.18);
+}
+
+.fact__icon {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #20201e;
+}
+
+.fact__label {
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.fact__value {
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+/* ---------- Kontaktkasten (ersetzt die alten Eckdaten) ---------- */
+
+.project-contact {
+  padding: 28px;
+  border: 1px solid rgba(32, 32, 30, 0.15);
+  border-radius: 2px;
+}
+
+.project-contact h2 {
+  margin: 0 0 12px;
+  font: 600 var(--fs-h4) / 1.2 var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+.project-contact p {
+  margin: 0 0 24px;
+}
+.project-missing {
+  padding: 80px 0;
+}
+
+/* ---------- Tablet und Mobil ---------- */
+
+@media (max-width: 800px) {
+  .subpage main { padding-top: 72px; }   /* NEU – Header ist mobil 72px hoch */
+
+  .firm-hero { min-height: 320px; }
+
+  .projekte-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .projekte-grid .project-card:nth-child(n) .project-image {
+    height: 65vw;
+  }
+
+  .project-detail {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,96 @@
+/*   Hero, Farben, Kachel-Stil, Label im Bild und "Zum Angebot →"-Hover kommen
+   aus ../Projekte/projekte.css (dort per <link> geladen). Hier nur die Unterschiede. */
+
+/* ---------- Raster: max. 3 pro Reihe ---------- */
+
+.angebote-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 56px 28px;
+}
+
+.projekte-grid.angebote-grid .project-card:nth-child(n) .project-image {
+  height: clamp(200px, 20vw, 320px);
+}
+
+/* Tablet: 2 pro Reihe */
+@media (max-width: 1100px) {
+  .angebote-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobil: 1 pro Reihe */
+@media (max-width: 800px) {
+  .angebote-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .projekte-grid.angebote-grid .project-card:nth-child(n) .project-image {
+    height: 65vw;
+  }
+}
+
+#no-angebote {
+  margin-top: 40px;
+}
+
+/* ---------- Detailseite ---------- */
+
+.angebot-text {
+  max-width: 100%;
+}
+
+.angebot-text p {
+  margin: 0 0 1.2em;
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+.angebot-lage {
+  margin-top: clamp(40px, 6vw, 72px);
+}
+
+.angebot-lage h2 {
+  margin: 0 0 18px;
+  font: 600 var(--fs-h3, var(--fs-h4)) / 1.15 var(--font-display);
+  letter-spacing: -0.04em;
+}
+
+/* Galerie: 3 Spalten, einheitliche Bildhöhe */
+.angebot-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: clamp(40px, 6vw, 72px);
+}
+
+.angebot-gallery figure {
+  margin: 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #a29f94, #5c6257);
+}
+
+.angebot-gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  align-self: center;
+}
+
+.angebot-cta {
+  margin-top: clamp(40px, 6vw, 72px);
+}
+
+@media (max-width: 1100px) {
+  .angebot-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .angebot-gallery {
+    grid-template-columns: 1fr;
+  }
+}

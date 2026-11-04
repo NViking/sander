@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Stellenanzeige der Sander Immobiliengruppe – Details zur Position, Aufgaben, Profil und Benefits."
+  >
+
+  <meta property="og:title" content="Stellenanzeige | Sander Immobiliengruppe">
+  <meta
+    property="og:description"
+    content="Details zur Position bei der Sander Immobiliengruppe."
+  >
+
+  <title>Stellenanzeige | Sander Immobiliengruppe</title>
+
+  <!-- Gemeinsames Design der Website + Styles nur für diese Seite -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="karriere.css">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Sander Immobiliengruppe",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Detmold",
+        "addressCountry": "DE"
+      },
+      "url": "https://www.sander-projekt.de"
+    }
+  </script>
+</head>
+
+<body class="subpage">
+  <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
+  <header class="site-header" data-header>
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="Sander Immobiliengruppe – Startseite"
+    >
+      <img
+        src="../assets/images/logo_weiß.png"
+        alt="Sander Immobiliengruppe"
+        class="brand-logo"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="main-nav"
+    >
+      Menü <span></span>
+    </button>
+
+    <nav
+      id="main-nav"
+      class="main-nav"
+      aria-label="Hauptnavigation"
+    >
+      <a href="../Unternehmen/unternehmen.html">Unternehmen</a>
+      <a href="../Leistungen/leistungen.html">Leistungen</a>
+      <a href="../Projekte/projekte.html">Projekte</a>
+      <a href="karriere.html" aria-current="page">Stellenanzeigen</a>
+      <a class="nav-contact" href="../index.html#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Die Stellenanzeige wird per JavaScript aus jobs-data.js gefüllt (stelle.html?id=…) -->
+    <div id="job-detail" aria-live="polite"></div>
+
+    <noscript>
+      <section class="section container">
+        <p>Bitte aktivieren Sie JavaScript, um die Stellenanzeige zu sehen.</p>
+      </section>
+    </noscript>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+
+      <div>
+        <p class="footer-label">Sander Immobiliengruppe</p>
+        <a href="../Unternehmen/unternehmen.html">Unternehmen</a>
+        <a href="../Leistungen/leistungen.html">Leistungen</a>
+        <a href="../Projekte/projekte.html">Projekte</a>
+        <a href="karriere.html">Karriere</a>
+      </div>
+
+      <div>
+        <p class="footer-label">Folgen</p>
+        <a href="[INSTAGRAM-URL]" rel="noopener noreferrer">Instagram</a>
+        <a href="[FACEBOOK-URL]" rel="noopener noreferrer">Facebook</a>
+        <a href="[LINKEDIN-URL]" rel="noopener noreferrer">LinkedIn</a>
+        <a href="[KLEINANZEIGEN-URL]" rel="noopener noreferrer">Kleinanzeigen</a>
+      </div>
+
+      <div>
+        <p class="footer-label">Rechtliches</p>
+        <a href="../impressum.html">Impressum</a>
+        <a href="../datenschutz.html">Datenschutz</a>
+        <a href="../kontakt.html">Kontakt</a>
+      </div>
+
+      <p class="copyright">
+        © <span data-year></span> Sander Immobiliengruppe
+      </p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/jobs-data.js"></script>
+  <script src="karriere.js"></script>
+</body>
+</html>

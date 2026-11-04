@@ -1,0 +1,173 @@
+/* assets/css/kontakt.css  (NEUE DATEI)
+   Variablen, Header, Footer, .button, .reveal usw. kommen aus styles.css. */
+
+/* ---------- Gemeinsam: weißer Hintergrund ---------- */
+
+.kontakt-page {
+  --container: 1480px;
+  background: #fff;
+}
+
+.kontakt-page main {
+  padding-top: 86px;
+  background: #fff;
+}
+
+.firm-title {
+  margin: 0 0 clamp(32px, 5vw, 56px);
+  font: 500 var(--fs-h1) / 1.1 var(--font-display);
+  letter-spacing: -0.04em;
+}
+
+/* ---------- Hero ---------- */
+
+.firm-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(360px, 40vw, 420px);
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(135deg, color-mixin srgb, var(--olive) 35%, #fff), var(--olive);
+}
+
+.firm-hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+.firm-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.firm-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(10, 12, 10, 0.65), rgba(10, 12, 10, 0.1) 65%, rgba(10, 12, 10, 0));
+  pointer-events: none;
+}
+
+.firm-hero__content {
+  position: relative;
+  z-index: 2;
+  padding-top: 40px;
+  padding-bottom: clamp(32px, 5vw, 64px);
+}
+
+.firm-hero h1 {
+  margin: 12px 0 18px;
+  font: 500 var(--fs-hero) / 1.04 var(--font-display);
+  letter-spacing: -0.05em;
+}
+
+.firm-hero__lead {
+  max-width: 52ch;
+  margin: 0;
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+}
+
+/* ---------- Standorte ---------- */
+
+.firm-locations {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  max-width: 1220px;
+  margin-inline: auto;
+}
+
+.firm-location {
+  overflow: hidden;
+  padding: 0 32px 32px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.firm-location img {
+  display: block;
+  width: calc(100% + 64px);
+  max-width: none;
+  height: auto;
+  margin: 0 -32px 28px;
+  object-fit: cover;
+}
+
+.firm-location__tag {
+  margin: 28px 0 0;
+  color: var(--olive);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.firm-location img + .firm-location__tag {
+  margin-top: 0;
+}
+
+.firm-location h3 {
+  margin: 18px 0 20px;
+  font: 600 var(--fs-h3) / 1.2 var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+.firm-location address {
+  margin-bottom: 28px;
+  font-size: var(--fs-body);
+  font-style: normal;
+  line-height: 1.7;
+}
+
+.firm-location address a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- CTA zum Kontaktmodul ---------- */
+
+.kontakt-cta {                                /* GEÄNDERT */
+  display: flex;
+  flex-direction: column;
+  align-items: center;                        /* mittig */
+  max-width: 760px;
+  padding-top: 0;                             /* kein zusätzlicher Abstand nach oben */
+  text-align: center;
+}
+
+.kontakt-cta h2 {                             /* GEÄNDERT */
+  margin: 0 0 16px;
+  font: 600 var(--fs-h3, var(--fs-h4)) / 1.15 var(--font-display);
+  letter-spacing: -0.04em;
+}
+
+.kontakt-cta p {                              /* GEÄNDERT */
+  margin: 0 0 28px;
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+.button-primary {
+    border-color: var(--peach);
+    background: var(--peach);
+    color: #fff;
+}
+/* ---------- Tablet und Mobil ---------- */
+
+@media (max-width: 800px) {
+  .kontakt-page main { padding-top: 72px; }
+  .firm-hero { min-height: 320px; }
+
+  .firm-locations {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: none;
+  }
+
+  .kontakt-cta__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

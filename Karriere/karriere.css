@@ -1,0 +1,484 @@
+/* =========================================================
+   KARRIERE – seitenspezifische Styles
+   (Variablen, Header, Footer, .reveal, .button usw. kommen
+   aus styles.css)
+   Enthält: Stellenübersicht (karriere.html) und
+            Stellenanzeige im Detail (stelle.html)
+   ========================================================= */
+
+/* ---------- Gemeinsam ---------- */
+
+.subpage main {
+  padding-top: 86px;
+}
+
+.subpage {
+  --container: 1480px;
+}
+
+/* ---------- NEU: Hero Stage (wie unternehmen.css) ---------- */
+
+.firm-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(360px, 40vw, 420px);
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--olive) 35%, #fff), var(--olive));
+}
+
+.firm-hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+.firm-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.firm-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to top, rgba(10, 12, 10, 0.65), rgba(10, 12, 10, 0.1) 65%, rgba(10, 12, 10, 0));
+  pointer-events: none;
+}
+
+.firm-hero__content {
+  position: relative;
+  z-index: 2;
+  padding-top: 40px;
+  padding-bottom: clamp(32px, 5vw, 64px);
+}
+
+.firm-hero h1 {
+  margin: 12px 0 18px;
+  font: 500 var(--fs-hero) / 1.04 var(--font-display);
+  letter-spacing: -0.05em;
+}
+
+.firm-hero__lead {
+  max-width: 52ch;
+  margin: 0;
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+  .firm-hero { min-height: 320px; }
+}
+
+/* ---------- Stellenübersicht ---------- */
+
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.job-card {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 240px;
+  padding: 28px;
+  border: 1px solid var(--line);
+
+  transition: 0.25s;
+}
+
+.job-card:hover {
+  background: var(--surface);
+  transform: translateY(-3px);
+}
+
+.job-card .job-meta {
+  color: var(--olive);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.job-card h3 {
+  margin: 22px 0 12px;
+
+  font: 600 var(--fs-h3) / 1.2 var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+.job-card p {
+  margin: 0 0 25px;
+  color: var(--muted);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+.job-card a {
+  margin-top: auto;
+  font-size: var(--fs-small);
+  font-weight: 700;
+}
+
+/* ---------- Stellenanzeige: Kopf ---------- */
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 36px;
+  color: var(--olive);
+  font-size: var(--fs-small);
+  font-weight: 700;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.job-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;                         /* Text unten im Bild */
+  min-height: clamp(320px, 36vw, 520px);         /* Höhe des Headers anpassen */
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--olive) 35%, #fff),
+    var(--olive));                               /* Platzhalter-Hintergrund */
+}
+
+.job-hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+/* Beschriftung des Platzhalters */
+.job-hero__media::after {
+  content: "Bildplatzhalter";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.job-hero__media img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Abdunklung für Lesbarkeit der Schrift */
+.job-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(to top, rgba(10, 12, 10, 0.65) 0%, rgba(10, 12, 10, 0.15) 60%, rgba(10, 12, 10, 0) 100%);
+  pointer-events: none;
+}
+
+.job-hero__content {
+  position: relative;
+  z-index: 3;                                    /* über Bild und Abdunklung */
+  padding-top: 40px;
+  padding-bottom: clamp(28px, 5vw, 56px);
+}
+
+.job-hero .back-link {
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.job-hero h1 {
+  max-width: 22ch;
+  margin: 0;
+  font: 600 var(--fs-h1) / 1.1 var(--font-display);
+  letter-spacing: -0.04em;
+}
+
+.job-hero .job-facts {
+  margin-top: 20px;
+  color: #fff;
+}
+
+/* Intro direkt unter dem Bild ohne extra Abstand nach oben */
+.job-hero + .section .job-intro {
+  margin-top: 0;
+}
+
+/* karriere.css – im Block "@media (max-width: 800px)" ergänzen */
+.job-hero {                                      /* NEU */
+  min-height: 300px;
+}
+
+.job-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+
+  color: var(--olive);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.job-intro {
+  max-width: 80ch;
+  margin: 40px 0 0;
+
+  color: var(--muted);
+  font-size: var(--fs-lead);
+  line-height: 1.6;
+}
+
+/* ---------- Stellenanzeige: Aufgaben und Profil ---------- */
+
+.job-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 96px);
+
+  margin-top: 64px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.job-columns h2 {
+  margin: 0 0 20px;
+
+  font: 600 var(--fs-h3) / 1.2 var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+.job-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.job-list li {
+  position: relative;
+  padding: 0 0 12px 24px;
+  font-size: var(--fs-body);
+
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.job-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.78em;
+  left: 0;
+  width: 12px;
+  height: 1px;
+  background: var(--olive);
+}
+
+/* ---------- Stellenanzeige: Benefits ---------- */
+
+.job-benefits {
+  padding: var(--space) 0;
+  border-top: 1px solid color-mix(in srgb, var(--olive) 25%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--olive) 25%, transparent);
+  background: color-mix(in srgb, var(--olive) 7%, var(--bg));
+}
+
+.job-benefits h2 {
+  margin: 0 0 clamp(36px, 6vw, 64px);
+
+  font: 600 var(--fs-h2) / 1.15 var(--font-display);
+  letter-spacing: -0.035em;
+  text-align: center;
+}
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(36px, 5vw, 64px) 32px;
+
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.benefit-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  text-align: center;
+}
+
+.benefit-item img {
+  width: 72px;
+  height: 72px;
+}
+
+.benefit-item span {
+  max-width: 22ch;
+  font-size: var(--fs-small);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+/* ---------- Stellenanzeige: Über uns und Bewerbung ---------- */
+
+.job-about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+}
+
+.job-about h2 {
+  margin: 0 0 24px;
+
+  font: 600 var(--fs-h2) / 1.15 var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+.job-about p {
+  max-width: 60ch;
+  margin: 0;
+
+  color: var(--muted);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+}
+
+.job-about__media {
+  position: relative;
+  justify-self: end;
+  width: 100%;
+  max-width: 460px;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: 2px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--olive) 35%, #fff),
+    var(--olive)
+  );
+}
+
+/* Beschriftung des Platzhalters (liegt unter dem Bild) */
+.job-about__media::after {
+  content: "Bildplatzhalter";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--fs-label);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.job-about__media img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.job-apply {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.job-apply h2 {
+  margin: 0 0 20px;
+
+  font: 600 var(--fs-h2) / 1.15 var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+.job-apply p {
+  max-width: 60ch;
+  margin: 0 0 28px;
+
+  color: var(--muted);
+  font-size: var(--fs-body);
+  line-height: 1.65;
+}
+
+.job-missing {
+  padding: 40px 0;
+}
+
+.job-missing h1 {
+  margin: 0 0 16px;
+  font: 600 var(--fs-h1) / 1.15 var(--font-display);
+  letter-spacing: -0.035em;
+}
+
+/* =========================================================
+   MEDIA QUERIES (ganz am Ende)
+   Diese Datei wird nach styles.css geladen, daher stehen die
+   Breakpoints für .job-grid hier.
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .job-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .subpage main {
+    padding-top: 72px;
+  }
+
+  .job-grid {
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+  }
+
+  .job-columns {
+    grid-template-columns: 1fr;
+    margin-top: 48px;
+  }
+
+  .benefit-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .job-about {
+    grid-template-columns: 1fr;
+  }
+
+  .job-about__media {
+    justify-self: start;
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefit-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta
+    name="description"
+    content="Projekte der Sander Immobiliengruppe – Gewerbe- und Wohnbauprojekte in Detmold und Umgebung, von der Planung bis zur Fertigstellung."
+  >
+
+  <meta property="og:title" content="Projekte | Sander Immobiliengruppe">
+  <meta
+    property="og:description"
+    content="Unsere Gewerbe- und Wohnbauprojekte im Überblick."
+  >
+
+  <title>Projekte | Sander Immobiliengruppe</title>
+
+  <!-- Gemeinsames Design der Website + Styles nur für diese Seite -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="projekte.css">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Sander Immobiliengruppe",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Detmold",
+        "addressCountry": "DE"
+      },
+      "url": "https://www.sander-projekt.de"
+    }
+  </script>
+</head>
+
+<body class="subpage">
+  <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+
+  <header class="site-header" data-header>
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="Sander Immobiliengruppe – Startseite"
+    >
+      <img
+        src="../assets/images/logo_weiß.png"
+        alt="Sander Immobiliengruppe"
+        class="brand-logo"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="main-nav"
+    >
+      Menü <span></span>
+    </button>
+
+    <nav
+      id="main-nav"
+      class="main-nav"
+      aria-label="Hauptnavigation"
+    >
+      <a href="../Unternehmen/unternehmen.html">Unternehmen</a>
+      <a href="../Leistungen/leistungen.html">Leistungen</a>
+      <a href="../Projekte/projekte.html" aria-current="page">Projekte</a>
+      <a href="../Immobilienangebote/immobilienangebote.html">Immobilienangebote</a>
+      <a href="../Karriere/karriere.html">Karriere</a>
+      <a class="nav-contact" href="../index.html#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- Hero (wie karriere.html) -->
+    <section class="firm-hero">
+      <div class="firm-hero__media"><img src="../assets/images/Buero_gruen.jpg" alt=""></div>
+      <div class="container firm-hero__content">
+        <p class="eyebrow">Referenzen</p>
+        <h1>Projekte</h1>
+        <p class="firm-hero__lead">Projekte mit Substanz: Gewerbe- und Wohnbau von der Planung bis zur Fertigstellung.</p>
+      </div>
+    </section>
+
+    <!-- Projekte -->
+    <section id="projekte" class="section container">
+
+      <div class="project-filter" role="group" aria-label="Projekte filtern">
+        <button type="button" class="project-filter__btn is-active" data-filter="alle" aria-pressed="true">Alle Projekte</button>
+        <button type="button" class="project-filter__btn" data-filter="Gewerbe" aria-pressed="false">Gewerbe</button>
+        <button type="button" class="project-filter__btn" data-filter="Wohnen" aria-pressed="false">Wohnen</button>
+      </div>
+
+      <div
+        id="projekte-grid"
+        class="projekte-grid"
+        aria-live="polite"
+      ></div>
+
+      <p id="no-projekte" hidden>
+        In dieser Kategorie sind aktuell keine Projekte eingetragen.
+      </p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+
+      <div>
+        <p class="footer-label">Sander Immobiliengruppe</p>
+        <a href="../Unternehmen/unternehmen.html">Unternehmen</a>
+        <a href="../Leistungen/leistungen.html">Leistungen</a>
+        <a href="projekte.html">Projekte</a>
+        <a href="../Immobilienangebote/immobilienangebote.html">Immobilienangebote</a>
+        <a href="../Karriere/karriere.html">Karriere</a>
+      </div>
+
+      <div>
+        <p class="footer-label">Folgen</p>
+        <a href="[INSTAGRAM-URL]" rel="noopener noreferrer">Instagram</a>
+        <a href="[FACEBOOK-URL]" rel="noopener noreferrer">Facebook</a>
+        <a href="[LINKEDIN-URL]" rel="noopener noreferrer">LinkedIn</a>
+        <a href="[KLEINANZEIGEN-URL]" rel="noopener noreferrer">Kleinanzeigen</a>
+      </div>
+
+      <div>
+        <p class="footer-label">Rechtliches</p>
+        <a href="../impressum.html">Impressum</a>
+        <a href="../datenschutz.html">Datenschutz</a>
+        <a href="../kontakt.html">Kontakt</a>
+      </div>
+
+      <p class="copyright">
+        © <span data-year></span> Sander Immobiliengruppe
+      </p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/projekte-data.js"></script>
+  <script src="projekte.js"></script>
+</body>
+</html>
