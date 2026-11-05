@@ -24,7 +24,7 @@
   --font-body: "DM Sans", Arial, sans-serif;
 
   --container: 1480px;
-  --gutter: clamp(30px, 4vw, 56px);
+  --gutter: clamp(50px, 8vw, 62px);
   --header-pad: var(--gutter);              /* NEU: Seitenabstand des Headers (mobil enger) */
   --logo-offset: 20px; 
   --space: clamp(52px, 10vw, 100px);
@@ -212,10 +212,11 @@ textarea {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.button-row {
+.button-row {                         /* GEÄNDERT: nur justify-content */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;            /* NEU: Button und Link zentriert */
   gap: 28px;
 }
 
@@ -267,6 +268,7 @@ textarea {
 
 .hero-image {
   background-image:
+    /* 1) Oben: Verlauf für den Header (unverändert) */
     linear-gradient(
       to bottom,
       rgba(10, 12, 10, 0.70) 0,
@@ -274,16 +276,17 @@ textarea {
       rgba(10, 12, 10, 0.24) 180px,
       rgba(10, 12, 10, 0) 330px
     ),
-    linear-gradient(
-      to left,
-      rgba(10, 12, 10, 0.04) 0%,
-      rgba(10, 12, 10, 0.07) 22%,
-      rgba(10, 12, 10, 0.14) 42%,
-      rgba(10, 12, 10, 0.30) 60%,
-      rgba(10, 12, 10, 0.58) 76%,
-      rgba(10, 12, 10, 0.687) 90%,
-      rgba(10, 12, 10, 0.707) 100%
+
+    /* 2) GEÄNDERT: statt "to left" (dunkel rechts) jetzt dunkel in der Mitte, hinter dem zentrierten Text */
+    radial-gradient(
+      ellipse 85% 75% at 50% 62%,
+      rgba(10, 12, 10, 0.62) 0%,
+      rgba(10, 12, 10, 0.55) 30%,
+      rgba(10, 12, 10, 0.36) 60%,
+      rgba(10, 12, 10, 0.16) 85%,
+      rgba(10, 12, 10, 0.08) 100%
     ),
+
     url("../images/Buero_gruen.jpg");
 
   background-size: cover;
@@ -296,11 +299,13 @@ textarea {
 .hero-content {
   position: relative;
   padding-bottom: clamp(68px, 10vh, 122px);
+  text-align: center; 
 }
+
 
 .hero h1 {
   max-width: 900px;
-  margin: 16px 0 24px;
+  margin: 16px auto 24px;
   font: 600 var(--fs-hero) / 1.04 var(--font-display);
   letter-spacing: -0.05em;
 }
@@ -311,7 +316,7 @@ textarea {
 
 .hero-copy {
   max-width: 60ch;
-  margin-bottom: 34px;
+  margin: 0 auto 34px;
   font-size: var(--fs-body);
 }
 
@@ -893,13 +898,13 @@ textarea {
 
 @media (max-width: 600px) {                          
   .button-row {
-    flex-direction: column;                          /* Button und Link immer untereinander, kein zufälliger Umbruch */
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;              /* GEÄNDERT: war flex-start */
     gap: 22px;
   }
 
   .text-link {
-    margin-left: 5px;                               /* Text startet exakt unter dem Text im Button (Button-Padding 19px + 1px Rand) */
+    margin-left: 0;                   /* GEÄNDERT: war 20px, die Einrückung entfällt bei zentriertem Text */
   }
 }
 
