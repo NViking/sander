@@ -308,6 +308,7 @@ textarea {
   margin: 16px auto 24px;
   font: 600 var(--fs-hero) / 1.04 var(--font-display);
   letter-spacing: -0.05em;
+  text-wrap: balance; 
 }
 
 .hero h1 em {
