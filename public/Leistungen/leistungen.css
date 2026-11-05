@@ -542,6 +542,7 @@
   .project-card.reveal.is-visible:hover { transform: none; }
 }
 @media (max-width: 1000px) {
+  .firm-locations { grid-template-columns: 1fr; }
   .firm-cards { grid-template-columns: 1fr; }
   .lei-firms { grid-template-columns: repeat(2, minmax(0, 1fr));}
 }
