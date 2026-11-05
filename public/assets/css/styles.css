@@ -32,7 +32,7 @@
   --step--1: clamp(0.78rem, 0.74rem + 0.18vw, 0.9rem);
 
   /* Schriftgrößen – einheitlich für alle Seiten */
-  --fs-hero: clamp(60px, 6.2vw, 90px);   /* Startseite: große Hero-Überschrift */
+  --fs-hero: clamp(54px, 6.2vw, 90px);   /* Startseite: große Hero-Überschrift */
   --fs-h1: clamp(32px, 4.2vw, 60px);     /* Abschnitts- und Seitenüberschriften */
   --fs-h2: clamp(28px, 3vw, 44px);       /* Unterüberschriften großer Blöcke */
   --fs-h3: clamp(24px, 2.2vw, 32px);     /* Kartentitel (Leistungen, Stellen) */
